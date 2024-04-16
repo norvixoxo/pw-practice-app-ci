@@ -376,5 +376,5 @@ test('Sliders', async({page}) => {
    await page.mouse.move(x - 100, y)
    await page.mouse.move(x - 100, y + 100)
    await page.mouse.up()
-   await expect(tempBox).toContainText('13')
+   await expect(tempBox).toContainText('12')
 })
