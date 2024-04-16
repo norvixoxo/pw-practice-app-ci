@@ -1,5 +1,5 @@
 import {expect, test} from '@playwright/test'
-import { textTitles } from '../fixtures/testData'
+import { textTitles } from '../src/fixtures/testData'
 
 test('Drag and Drop with iFrames', async({page}) => {
     await page.goto('https://www.globalsqa.com/demo-site/draganddrop/')
