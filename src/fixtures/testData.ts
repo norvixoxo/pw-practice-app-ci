@@ -1,0 +1,1 @@
+export const textTitles = ["High Tatras 2", "High Tatras 4", "High Tatras 3"]
