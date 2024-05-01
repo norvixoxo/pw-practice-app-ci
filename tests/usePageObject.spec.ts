@@ -1,5 +1,6 @@
 import {expect, test} from '@playwright/test'
 import { NavigationPage } from '../page-objects/navigationPage'
+import { FormLayoutsPage } from '../page-objects/formLayoutsPage'
 
 test.beforeEach(async({page}) => {
     await page.goto('http://localhost:4200/')
@@ -21,4 +22,25 @@ test('Navigate to Form page', async({page}) => {
     await navigateTo.toastrPage()
 
     await navigateTo.toolTipPage()
+})
+
+test('Parameterized Methods', async({page}) => {
+    const navigateTo = new NavigationPage(page) 
+    const onFormLayoutsPage = new FormLayoutsPage(page)
+
+    await navigateTo.formLayoutsPage()
+    await onFormLayoutsPage.submitUsingTheGridFormWithCredentialsAndSelectOption('test@test.com', 'Welcome1', 'Option 1')
+
+    await onFormLayoutsPage.submitInlineFormWithNameEmailAndCheckbox('Stephen Hawkins', 'stephen.hawkings@testing.com', true)
+
+    await onFormLayoutsPage.submitBasicFormWithEmailPasswordAndCheckbox('peter.turner@testing.com', 'Welcome2', true)
+
+})
+
+test('Block Form Parameterized Method Self Study', async({page}) => {
+    const navigateTo = new NavigationPage(page) 
+    const onFormLayoutsPage = new FormLayoutsPage(page)
+
+    await navigateTo.formLayoutsPage()
+    await onFormLayoutsPage.submitUsingBlockFormWithFirsLastNameEmailAndWebsiteCredentials('Maxwell', 'David', 'maxwell.david@testing123com', 'www.maxwelldavid.com')
 })
