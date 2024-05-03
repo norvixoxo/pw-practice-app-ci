@@ -52,5 +52,6 @@ test('Date Picker Object', async({page}) => {
     const onDatePickerPage = new DatePickerPage(page)
 
     await navigateTo.datePickerPage()
-    await onDatePickerPage.selectCommonDatePickerDateFromToday(5)
+    await onDatePickerPage.selectCommonDatePickerDateFromToday(10)
+    await onDatePickerPage.selectDatePickerWithRangeFromToday(5, 20)
 })
