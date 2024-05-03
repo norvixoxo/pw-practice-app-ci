@@ -268,7 +268,7 @@ test('Date Picker', async({page}) => {
  */
 
     await page.locator('[class="day-cell ng-star-inserted"]').getByText('1', {exact: true}).click()
-    await expect(calendarInputField).toHaveValue('Apr 1, 2024')
+    await expect(calendarInputField).toHaveValue('May 1, 2024')
 
 /***
  * Automating dates

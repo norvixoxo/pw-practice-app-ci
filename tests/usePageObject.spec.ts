@@ -1,6 +1,7 @@
 import {expect, test} from '@playwright/test'
 import { NavigationPage } from '../page-objects/navigationPage'
 import { FormLayoutsPage } from '../page-objects/formLayoutsPage'
+import { DatePickerPage } from '../page-objects/datePickerPage'
 
 test.beforeEach(async({page}) => {
     await page.goto('http://localhost:4200/')
@@ -43,4 +44,13 @@ test('Block Form Parameterized Method Self Study', async({page}) => {
 
     await navigateTo.formLayoutsPage()
     await onFormLayoutsPage.submitUsingBlockFormWithFirsLastNameEmailAndWebsiteCredentials('Maxwell', 'David', 'maxwell.david@testing123com', 'www.maxwelldavid.com')
+})
+
+test('Date Picker Object', async({page}) => {
+    const navigateTo = new NavigationPage(page) 
+    const onFormLayoutsPage = new FormLayoutsPage(page)
+    const onDatePickerPage = new DatePickerPage(page)
+
+    await navigateTo.datePickerPage()
+    await onDatePickerPage.selectCommonDatePickerDateFromToday(5)
 })
