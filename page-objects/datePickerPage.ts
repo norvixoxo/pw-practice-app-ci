@@ -1,11 +1,15 @@
 import {Page, expect, test} from '@playwright/test'
+import { HelperBase } from './helperBase'
 
 
-export class DatePickerPage{
-    private readonly page: Page
+export class DatePickerPage extends HelperBase{
+    
+    //private readonly page: Page
 
     constructor(page: Page){
-        this.page = page
+
+     // this.page = page
+        super(page)
     }
 
     async selectCommonDatePickerDateFromToday(numberOfDaysFromToday: number){
@@ -15,6 +19,7 @@ export class DatePickerPage{
         const dateToAssert = await this.selectDateInTheCalendar(numberOfDaysFromToday)
     
         await expect(calendarInputField).toHaveValue(dateToAssert)
+        await this.waitForNumberOfSeconds(2)
     }
 
     async selectDatePickerWithRangeFromToday(startDayFromToday: number, endDayFromToday: number){
@@ -24,6 +29,7 @@ export class DatePickerPage{
         const dateToAssertEnd = await this.selectDateInTheCalendar(endDayFromToday)
         const dateToAssert = `${dateToAssertStart} - ${dateToAssertEnd}`
         await expect(calendarInputField).toHaveValue(dateToAssert)
+        await this.waitForNumberOfSeconds(2)
     }
 
     private async selectDateInTheCalendar(numberOfDaysFromToday: number){

@@ -1,18 +1,21 @@
 import { Page } from "@playwright/test";
+import { HelperBase } from "./helperBase";
 
-export class NavigationPage {
+export class NavigationPage extends HelperBase {
 
-    readonly page: Page
+   // readonly page: Page
 
     constructor(page: Page){
 
-        this.page = page
+       // this.page = page
+        super(page)
     }
 
     async formLayoutsPage() {
         
         await this.selectGroupMenuItem('Forms')
         await this.page.getByText('Form Layouts').click()
+        await this.waitForNumberOfSeconds(2)
     }
 
     async datePickerPage(){
@@ -20,24 +23,28 @@ export class NavigationPage {
         await this.selectGroupMenuItem('Forms')
         await this.page.waitForTimeout(1000)
         await this.page.getByText('Datepicker').click()
+        await this.waitForNumberOfSeconds(2)
     }
 
     async smartTablePage(){
     
         await this.selectGroupMenuItem('Tables & Data')
         await this.page.getByText('Smart Table').click()
+        await this.waitForNumberOfSeconds(2)
     }
 
     async toastrPage(){
         
         await this.selectGroupMenuItem('Modal & Overlays')
         await this.page.getByText('Toastr').click()
+        await this.waitForNumberOfSeconds(2)
     }
 
     async toolTipPage(){
       
         await this.selectGroupMenuItem('Modal & Overlays')
         await this.page.getByText('Tooltip').click()
+        await this.waitForNumberOfSeconds(2)
     }
 
     private async selectGroupMenuItem(groupItemTitle: string){

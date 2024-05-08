@@ -1,12 +1,14 @@
 import { Page } from "@playwright/test";
+import { HelperBase } from "./helperBase";
 
-export class FormLayoutsPage {
+export class FormLayoutsPage extends HelperBase {
 
-    private readonly page: Page
+   // private readonly page: Page
 
     constructor(page: Page){
 
-        this.page = page
+    // this.page = page
+        super(page)
     }
     /**
      * This method fills out the Using the Grid form with user details
@@ -20,6 +22,7 @@ export class FormLayoutsPage {
         await usingTheGridForm.getByRole('textbox', {name: "Password"}).fill(password)
         await usingTheGridForm.getByRole('radio', {name: optionText}).check({force: true})
         await usingTheGridForm.getByRole('button').click()
+        await this.waitForNumberOfSeconds(2)
     }
 
     /**
@@ -50,6 +53,7 @@ export class FormLayoutsPage {
         if(checkMeOut)
             await basicForm.getByRole('checkbox').check({force: true})
         await basicForm.getByRole('button').click()
+        await this.waitForNumberOfSeconds(2)
     }
 
     /**
@@ -66,6 +70,7 @@ export class FormLayoutsPage {
         await blockForm.getByRole('textbox', {name: "Email"}).fill(email)
         await blockForm.getByRole('textbox', {name: "Website"}).fill(website)
         await blockForm.getByRole('button').click()
+        await this.waitForNumberOfSeconds(2)
     }
 
 }
