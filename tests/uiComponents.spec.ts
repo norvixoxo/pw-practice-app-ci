@@ -5,12 +5,20 @@ test.beforeEach(async({page}) => {
 })
 
 test.describe('Form Layouts page', async() => {
+    
+    //manually sets the amount of retries for the test locally instead of the global setting in playwright.config.ts file
+    //test.describe.configure({retries: 2})
+
     test.beforeEach(async({page}) => {
         await page.getByText('Forms').click()
         await page.getByText('Form Layouts').click()
     })
 
-    test('Input Fields', async({page}) => {
+    test('Input Fields', async({page}, testInfo) => {
+        if (testInfo.retry){
+            //do something
+            //insert code here where it is necessary to clean dB before test retry etc
+        }
         const usingTheGridEmailInput = page.locator('nb-card', {hasText: "Using the Grid"}).getByRole('textbox', {name: "Email"})
         await usingTheGridEmailInput.fill('test@testing.com')
         await usingTheGridEmailInput.clear()
