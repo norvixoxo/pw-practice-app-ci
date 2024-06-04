@@ -19,10 +19,16 @@ export default defineConfig({
   // },
 
   testDir: './tests',
-  /* Run tests in files in parallel */
+  
+  /* Run tests in files in parallel 
+  * When set to false it means the whole framework and tests will run in sequence
+  * When set to trueit means playwright will run whole framework tests in parallel
+  */
   fullyParallel: true,
+  
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
+  
   /* Retry on CI only 
   * if 2nd value us set to 0 then it will not retry means it is OFF (locally)
   * It will however retry on CI
@@ -31,10 +37,18 @@ export default defineConfig({
   * It can be overwritten for each specific test in the function/test code
   */
   retries: process.env.CI ? 2 : 1,
-  /* Opt out of parallel tests on CI. */
+  
+  /* Opt out of parallel tests on CI. 
+  * if set to undefined playwright allocates 5 workers by default
+  * if set to a specific number then that is the amount of workers that will be used
+  * if for e.g. set to 1 you can remame spec files with prefix of 001-test.spec.ts etc and it will pick them in that order
+  * otherwise it will pick it at random
+  */
   workers: process.env.CI ? 1 : undefined,
+  
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
+  
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -51,6 +65,8 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+      fullyParallel: true
+      //can set parallel for each borwser excluding the other browsers
     },
 
     {

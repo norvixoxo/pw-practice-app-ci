@@ -1,13 +1,21 @@
 import {expect, test} from '@playwright/test'
 
+//if you want to run the whole spec file in parallel you can put the below
+test.describe.configure({mode: "parallel"})
+
 test.beforeEach(async({page}) => {
     await page.goto('http://localhost:4200/')
 })
 
-test.describe('Form Layouts page', async() => {
-    
+test.describe.parallel('Form Layouts page', async() => {
+    //using the test.describe.parallel sets the these test inside this test to run in parallel and everything else is sequentially
+
     //manually sets the amount of retries for the test locally instead of the global setting in playwright.config.ts file
-    //test.describe.configure({retries: 2})
+    test.describe.configure({retries: 2})
+
+    // if tests depend on each other then you can run them in sequential order and if one fails the other will not run but skip.
+    //note its not best practice and can be done as below
+    test.describe.configure({mode: 'serial'})
 
     test.beforeEach(async({page}) => {
         await page.getByText('Forms').click()
