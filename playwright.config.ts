@@ -58,6 +58,19 @@ export default defineConfig({
     trace: 'on-first-retry',
     //actionTimeout: 5000,
     // navigationTimeout: 5000,
+
+  /***
+   * here is to insert code to help save video when test is running
+   * by default it is off
+   * you have options to select when to recod etc
+   * choose appropriate one
+   * if you want to specify the video resolution then you can do this as well see below
+   */
+    video: {
+      mode: 'on',
+      size: {width: 1920, height: 1080}
+    }
+
   },
 
   /* Configure projects for major browsers */

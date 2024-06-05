@@ -38,9 +38,19 @@ test('Parameterized Methods', async({page}) => {
 
     await pm.navigateTo().formLayoutsPage()
     await pm.onFormLayoutsPage().submitUsingTheGridFormWithCredentialsAndSelectOption('test@testing.com', 'Welcome1', 'Option 1')
+    //adding the ability to take a screenshot of the page just after the above code is executed
+    await page.screenshot({path: 'screenshots/formsLayoutsPage.png'})
 
     await pm.onFormLayoutsPage().submitInlineFormWithNameEmailAndCheckbox(randomFullName, randomEmail, true)
+    // screenshot of only a section of the page not the whole page
+    await page.locator('nb-card', {hasText: "Inline form"}).screenshot({path:'screenshots/inlineForm.png'})
 
+    //this screenshot can be saved and able to send to someone or another system etc
+    const buffer = await page.screenshot()
+
+    // to demonstrate it is working we can send to console log
+    console.log(buffer.toString('base64'))
+    
     await pm.onFormLayoutsPage().submitBasicFormWithEmailPasswordAndCheckbox(randomFormWithEmail, 'Welcome2', true)
 
 })
