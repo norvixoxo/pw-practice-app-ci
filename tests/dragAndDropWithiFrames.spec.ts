@@ -1,8 +1,9 @@
-import {expect, test} from '@playwright/test'
+import {expect} from '@playwright/test'
 import { textTitles } from '../src/fixtures/testData'
+import {test} from '../testOptions'
 
-test('Drag and Drop with iFrames', async({page}) => {
-    await page.goto('https://www.globalsqa.com/demo-site/draganddrop/')
+test('Drag and Drop with iFrames', async({page, globalsQaURL}) => {
+    await page.goto(globalsQaURL)
     await page.getByText('Consent',{exact:true}).first().click()
 
     const frame = page.frameLocator('[rel-title="Photo Manager"] iframe') 

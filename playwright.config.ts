@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import type { TestOptions } from './testOptions';
 
 /**
  * Read environment variables from file.
@@ -9,7 +10,7 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+export default defineConfig<TestOptions>({
   //timeout: 10000,
 
   //globalTimeout: 60000,
@@ -53,6 +54,7 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'http://localhost:4200/',
+    globalsQaURL: 'https://www.globalsqa.com/demo-site/draganddrop/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -75,33 +77,36 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    // {
-    //   name: 'dev',
-    //   use: { 
-    //     ...devices['Desktop Chrome'],
-    //     baseURL: 'http://localhost:4201/'
-    //    },
-    //   fullyParallel: true
-    //   //can set parallel for each borwser excluding the other browsers
-    // },
-    // {
-    //   name: 'stage',
-    //   use: { 
-    //     ...devices['Desktop Chrome'],
-    //     baseURL: 'http://localhost:4202/'
-    //    },
-    //   fullyParallel: true
-    //   //can set parallel for each borwser excluding the other browsers
-    // },
-    // {
-    //   name: 'prod',
-    //   use: { 
-    //     ...devices['Desktop Chrome'],
-    //     baseURL: 'http://localhost:4203/'
-    //    },
-    //   fullyParallel: true
-    //   //can set parallel for each borwser excluding the other browsers
-    // },
+    {
+      name: 'dev',
+      use: { 
+        ...devices['Desktop Chrome'],
+        baseURL: 'http://localhost:4201/',
+        globalsQaURL: 'https://www.globalsqa.com/demo-site/draganddrop/'
+       },
+      fullyParallel: true
+      //can set parallel for each borwser excluding the other browsers
+    },
+    {
+      name: 'stage',
+      use: { 
+        ...devices['Desktop Chrome'],
+        baseURL: 'http://localhost:4202/',
+        globalsQaURL: 'https://www.globalsqa.com/demo-site/draganddrop/'
+       },
+      fullyParallel: true
+      //can set parallel for each borwser excluding the other browsers
+    },
+    {
+      name: 'prod',
+      use: { 
+        ...devices['Desktop Chrome'],
+        baseURL: 'http://localhost:4203/',
+        globalsQaURL: 'https://www.globalsqa.com/demo-site/draganddrop/'
+       },
+      fullyParallel: true
+      //can set parallel for each borwser excluding the other browsers
+    },
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
