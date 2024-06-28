@@ -76,6 +76,33 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'dev',
+      use: { 
+        ...devices['Desktop Chrome'],
+        baseURL: 'http://localhost:4201/'
+       },
+      fullyParallel: true
+      //can set parallel for each borwser excluding the other browsers
+    },
+    {
+      name: 'stage',
+      use: { 
+        ...devices['Desktop Chrome'],
+        baseURL: 'http://localhost:4202/'
+       },
+      fullyParallel: true
+      //can set parallel for each borwser excluding the other browsers
+    },
+    {
+      name: 'prod',
+      use: { 
+        ...devices['Desktop Chrome'],
+        baseURL: 'http://localhost:4203/'
+       },
+      fullyParallel: true
+      //can set parallel for each borwser excluding the other browsers
+    },
+    {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
       fullyParallel: true
