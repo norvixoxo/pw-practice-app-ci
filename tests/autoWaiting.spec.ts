@@ -3,7 +3,7 @@ import { timeout } from 'rxjs-compat/operator/timeout'
 
 
 test.beforeEach(async({page}, testInfo) => { //adding testInfo as another argument can be used to apply and increase timeout for a suite
-    await page.goto('http://uitestingplayground.com/ajax')
+    await page.goto(process.env.URL)
     await page.getByText('Button Triggering AJAX Request').click()
     testInfo.setTimeout(testInfo.timeout + 2000) //this line adds the extra time for all/every tests in suite
 })
