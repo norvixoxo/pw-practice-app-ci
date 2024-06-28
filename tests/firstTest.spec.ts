@@ -24,7 +24,7 @@ import {expect, test} from '@playwright/test'
 // })
 
 // test('the first test', async ({page}) => {
-//     await page.goto('http://localhost:4200/')
+//     await page.goto('/')
 //     await page.getByText('Forms').click()
 //     await page.getByText('Form Layouts').click()    
 // })
@@ -33,7 +33,7 @@ import {expect, test} from '@playwright/test'
 // // to use await expression it need to be an "async" function
 
 // test('the second test', async ({page}) => {
-//     await page.goto('http://localhost:4200/')
+//     await page.goto('/')
 //     await page.getByText('Modal & Overlays').click()
 //     await page.getByText('Dialog').click()    
 // })
@@ -45,7 +45,7 @@ import {expect, test} from '@playwright/test'
 // test.afterEach
 
 test.beforeEach(async({page}) => {
-    await page.goto('http://localhost:4200/')
+    await page.goto('/')
     await page.getByText('Forms').click()
     await page.getByText('Form Layouts').click()
 })
