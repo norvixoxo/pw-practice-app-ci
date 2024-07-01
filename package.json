@@ -15,7 +15,10 @@
     "draganddrop-tests": "npx playwright test dragAndDropWithiFrames.spec.ts --project=chromium",
     "autowaiting-chromeandfirefox-sequentially": "npx playwright test autoWaiting.spec.ts --project=chromium && npx playwright test autoWaiting.spec.ts --project=firefox",
     "autowaiting-chromeandfirefox-parralel": "npx playwright test autoWaiting.spec.ts --project=chromium & npx playwright test autoWaiting.spec.ts --project=firefox",
-    "tests": "npx playwright test autoWaiting.spec.ts --project=chromium && npx playwright test firstTest.spec.ts --project=chromium && npx playwright test uiComponents.spec.ts --project=chromium && npx playwright test usePageObjects.spec.ts --project=chromium"
+    "tests": "npx playwright test autoWaiting.spec.ts --project=chromium && npx playwright test firstTest.spec.ts --project=chromium && npx playwright test uiComponents.spec.ts --project=chromium && npx playwright test usePageObjects.spec.ts --project=chromium",
+    "autoWait-dev": "URL=http://uitestingplayground.com/ajax npx playwright test autoWaiting.spec.ts --project=chromium",
+    "autoWait-stage": "URL=http://uitestingplayground.com/ajax npx playwright test autoWaiting.spec.ts --project=chromium",
+    "autoWait-prod": "URL=http://uitestingplayground.com/ajax npx playwright test autoWaiting.spec.ts --project=chromium"
   },
   "dependencies": {
     "@angular/animations": "^14.2.12",
