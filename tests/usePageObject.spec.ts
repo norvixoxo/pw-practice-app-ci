@@ -37,7 +37,7 @@ test('Parameterized Methods', async({page}) => {
     // const onFormLayoutsPage = new FormLayoutsPage(page)
 
     await pm.navigateTo().formLayoutsPage()
-    await pm.onFormLayoutsPage().submitUsingTheGridFormWithCredentialsAndSelectOption('test@testing.com', 'Welcome1', 'Option 1')
+    await pm.onFormLayoutsPage().submitUsingTheGridFormWithCredentialsAndSelectOption(process.env.USERNAME, process.env.PASSWORD, 'Option 1')
     //adding the ability to take a screenshot of the page just after the above code is executed
     await page.screenshot({path: 'screenshots/formsLayoutsPage.png'})
 

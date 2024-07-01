@@ -1,5 +1,5 @@
 import {expect, test} from '@playwright/test'
-import { timeout } from 'rxjs-compat/operator/timeout'
+
 
 
 test.beforeEach(async({page}, testInfo) => { //adding testInfo as another argument can be used to apply and increase timeout for a suite

@@ -55,6 +55,10 @@ export default defineConfig<TestOptions>({
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'http://localhost:4200/',
     globalsQaURL: 'https://www.globalsqa.com/demo-site/draganddrop/',
+    // baseURL: process.env.DEV === '1' ?'http://localhost:4200/'
+    //       : process.env.STAGE == '1' ? 'http://localhost:4202/'
+    //       :process.env.PROD == '1' ? 'http://localhost:4203/'
+    //       : 'http://localhost:4200/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -78,10 +82,10 @@ export default defineConfig<TestOptions>({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'dev',
+      name: 'Dev',
       use: { 
         ...devices['Desktop Chrome'],
-        baseURL: 'http://localhost:4201/',
+       // baseURL: 'http://localhost:4205/',
         globalsQaURL: 'https://www.globalsqa.com/demo-site/draganddrop/'
        },
       fullyParallel: true
