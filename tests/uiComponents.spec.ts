@@ -7,7 +7,7 @@ test.beforeEach(async({page}) => {
     await page.goto('/')
 })
 
-test.describe.parallel('Form Layouts page', async() => {
+test.describe('Form Layouts page', async() => {
     //using the test.describe.parallel sets the these test inside this test to run in parallel and everything else is sequentially
 
     //manually sets the amount of retries for the test locally instead of the global setting in playwright.config.ts file
