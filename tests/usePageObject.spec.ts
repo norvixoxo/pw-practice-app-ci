@@ -6,7 +6,7 @@ test.beforeEach(async({page}) => {
     await page.goto('/')
 })
 
-test('Navigate to Form page', async({page}) => {
+test('Navigate to Form page @tags', async({page}) => {
     const pm = new PageManager(page)
     
     //const navigateTo = new NavigationPage(page) 
@@ -26,7 +26,7 @@ test('Navigate to Form page', async({page}) => {
     await pm.navigateTo().toolTipPage()
 })
 
-test('Parameterized Methods', async({page}) => {
+test('Parameterized Methods @plus', async({page}) => {
 
     const pm = new PageManager(page)
     const randomFullName = faker.person.fullName()
@@ -55,7 +55,7 @@ test('Parameterized Methods', async({page}) => {
 
 })
 
-test('Block Form Parameterized Method Self Study', async({page}) => {
+test('Block Form Parameterized Method Self Study @smoke @nice', async({page}) => {
 
     const pm = new PageManager(page)
     const randomFirstName = faker.person.firstName()
@@ -70,7 +70,7 @@ test('Block Form Parameterized Method Self Study', async({page}) => {
     await pm.onFormLayoutsPage().submitUsingBlockFormWithFirsLastNameEmailAndWebsiteCredentials(randomFirstName, randomLastname, randomEmailWithFirstAndLastName, randomWebsite)
 })
 
-test('Date Picker Object', async({page}) => {
+test('Date Picker Object @regression', async({page}) => {
 
     const pm = new PageManager(page)
 
