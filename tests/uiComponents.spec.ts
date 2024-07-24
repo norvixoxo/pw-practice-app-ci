@@ -33,17 +33,17 @@ test.describe('Form Layouts page @block', async() => {
         //to clear it you have to call the locator again to clear it. you cannot chain the clear with the fill.
 
         // Using to simulate the typing of individual letters into the input field
-        await usingTheGridEmailInput.pressSequentially('test2@testing.com')
+        await usingTheGridEmailInput.fill('test2@testing.com')
         await usingTheGridEmailInput.clear()
 
         //can also be done with delay inbtween the typing of letters by adding another argument
-        await usingTheGridEmailInput.pressSequentially('test3@testing.com', {delay: 500})
+        await usingTheGridEmailInput.fill('test3@testing.com')
         await usingTheGridEmailInput.clear()
 
     //Assertions in the Input Fields
         
         //generic assertions
-        await usingTheGridEmailInput.pressSequentially('test4@testing.com', {delay: 500})
+        await usingTheGridEmailInput.fill('test4@testing.com')
         const inputValueText = await usingTheGridEmailInput.inputValue()
         expect(inputValueText).toEqual('test4@testing.com')
 

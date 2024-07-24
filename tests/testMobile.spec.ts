@@ -17,9 +17,9 @@ test('Input Fields', async({page}, testInfo) => {
     const usingTheGridEmailInput = page.locator('nb-card', {hasText: "Using the Grid"}).getByRole('textbox', {name: "Email"})
     await usingTheGridEmailInput.fill('test@testing.com')
     await usingTheGridEmailInput.clear()
-    await usingTheGridEmailInput.pressSequentially('test2@testing.com')
+    await usingTheGridEmailInput.fill('test2@testing.com')
     await usingTheGridEmailInput.clear()
-    await usingTheGridEmailInput.pressSequentially('test3@testing.com')
+    await usingTheGridEmailInput.fill('test3@testing.com')
     // await usingTheGridEmailInput.clear()
 
 })
