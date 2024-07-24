@@ -32,6 +32,8 @@ npm-debug.log
 testem.log
 /typings
 /docs
+allure-report/
+allure-results/
 
 # e2e
 /e2e/*.js

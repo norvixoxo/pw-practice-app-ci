@@ -19,7 +19,13 @@ export default defineConfig<TestOptions>({
 
   workers: process.env.CI ? 1 : undefined,
   
-  reporter: 'html',
+  reporter: [
+    ['json', {outputFile: 'test-results/jsonReport.json'}],
+    ['junit', {outputFile: 'test-results/junitReport.xml'}],
+    ['list'],
+    ['html', {open: 'on-failure'}],
+    ['allure-playwright'],
+  ],
   
   use: {
     // baseURL: 'http://localhost:4200/',
