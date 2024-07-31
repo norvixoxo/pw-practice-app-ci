@@ -11,7 +11,7 @@ test.describe('Form Layouts page @block', async() => {
     //using the test.describe.parallel sets the these test inside this test to run in parallel and everything else is sequentially
 
     //manually sets the amount of retries for the test locally instead of the global setting in playwright.config.ts file
-    test.describe.configure({retries: 2})
+    test.describe.configure({retries: 0})
 
     // if tests depend on each other then you can run them in sequential order and if one fails the other will not run but skip.
     //note its not best practice and can be done as below
@@ -72,9 +72,21 @@ test.describe('Form Layouts page @block', async() => {
 
         //Validate that when you select another radio button the previous one is no longer checked or selected
         await usingTheGridForm.getByRole('radio', {name: "Option 2"}).check({force: true})
-        expect(await usingTheGridForm.getByRole('radio', {name: "Option 1"}).isChecked()).toBeFalsy
-        expect(await usingTheGridForm.getByRole('radio', {name: "Option 2"}).isChecked()).toBeTruthy
+        // expect(await usingTheGridForm.getByRole('radio', {name: "Option 1"}).isChecked()).toBeFalsy
+        // expect(await usingTheGridForm.getByRole('radio', {name: "Option 2"}).isChecked()).toBeTruthy
         
+    })
+
+    test.only('Visual Testing', async({page}) => {
+        const usingTheGridForm = page.locator('nb-card', {hasText: "Using the Grid"})
+        await usingTheGridForm.getByLabel('Option 1').check({force: true})
+        await usingTheGridForm.getByRole('radio', {name: "Option 1"}).check({force: true})
+        const radioStatus = await usingTheGridForm.getByRole('radio', {name: "Option 1"}).isChecked()
+
+        // Use the .toHaveScreenshot() and add maxDiffPixels if its a flaky test to give tolerance
+        await expect(usingTheGridForm).toHaveScreenshot({maxDiffPixels:20})
+
+        // You can run this command in terminal "npx playwright test --update-snapshots" to re-run and create new baseline snapshots if there has been a new update
     })
 })
 

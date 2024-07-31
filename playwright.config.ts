@@ -8,7 +8,8 @@ export default defineConfig<TestOptions>({
   timeout: 10000,
   globalTimeout: 60000,
   expect:{
-    timeout: 2000
+    timeout: 2000,
+    toMatchSnapshot: {maxDiffPixels: 50}
   },
 
   testDir: './tests',
@@ -22,9 +23,10 @@ export default defineConfig<TestOptions>({
   reporter: [
     ['json', {outputFile: 'test-results/jsonReport.json'}],
     ['junit', {outputFile: 'test-results/junitReport.xml'}],
-    ['list'],
-    ['html', {open: 'on-failure'}],
+    // ['list'],
+    // ['html', {open: 'on-failure'}],
     ['allure-playwright'],
+    ['html']
   ],
   
   use: {
