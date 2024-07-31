@@ -72,12 +72,12 @@ test.describe('Form Layouts page @block', async() => {
 
         //Validate that when you select another radio button the previous one is no longer checked or selected
         await usingTheGridForm.getByRole('radio', {name: "Option 2"}).check({force: true})
-        // expect(await usingTheGridForm.getByRole('radio', {name: "Option 1"}).isChecked()).toBeFalsy
-        // expect(await usingTheGridForm.getByRole('radio', {name: "Option 2"}).isChecked()).toBeTruthy
+        expect(await usingTheGridForm.getByRole('radio', {name: "Option 1"}).isChecked()).toBeFalsy
+        expect(await usingTheGridForm.getByRole('radio', {name: "Option 2"}).isChecked()).toBeTruthy
         
     })
 
-    test.only('Visual Testing', async({page}) => {
+    test('Visual Testing', async({page}) => {
         const usingTheGridForm = page.locator('nb-card', {hasText: "Using the Grid"})
         await usingTheGridForm.getByLabel('Option 1').check({force: true})
         await usingTheGridForm.getByRole('radio', {name: "Option 1"}).check({force: true})
