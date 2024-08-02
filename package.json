@@ -18,7 +18,9 @@
     "tests": "npx playwright test autoWaiting.spec.ts --project=chromium && npx playwright test firstTest.spec.ts --project=chromium && npx playwright test uiComponents.spec.ts --project=chromium && npx playwright test usePageObjects.spec.ts --project=chromium",
     "autoWait-dev": "URL=http://uitestingplayground.com/ajax npx playwright test autoWaiting.spec.ts --project=chromium",
     "autoWait-stage": "URL=http://uitestingplayground.com/ajax npx playwright test autoWaiting.spec.ts --project=chromium",
-    "autoWait-prod": "URL=http://uitestingplayground.com/ajax npx playwright test autoWaiting.spec.ts --project=chromium"
+    "autoWait-prod": "URL=http://uitestingplayground.com/ajax npx playwright test autoWaiting.spec.ts --project=chromium",
+    "pageObject-chrome": "npx playwright test usePageObject.spec.ts --project=chromium",
+    "uiComponents-chrome": "npx playwright test uiComponents.spec.ts --project=chromium"
   },
   "dependencies": {
     "@angular/animations": "^14.2.12",
