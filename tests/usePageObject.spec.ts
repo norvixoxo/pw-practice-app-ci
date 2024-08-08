@@ -82,3 +82,12 @@ test('Date Picker Object @regression', async({page}) => {
     await pm.onDatePickerPage().selectCommonDatePickerDateFromToday(10)
     await pm.onDatePickerPage().selectDatePickerWithRangeFromToday(3, 6)
 })
+
+test.only('testing with argos ci', async({page}) => {
+    const pm = new PageManager(page)
+    await pm.navigateTo().formLayoutsPage()
+    // await pm.navigateTo().datePickerPage()
+    // await pm.navigateTo().smartTablePage()
+    // await pm.navigateTo().toastrPage()
+    // await pm.navigateTo().toolTipPage()
+})
