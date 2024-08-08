@@ -6,6 +6,8 @@ services:
       context: .
       dockerfile: ./Dockerfile
     command: npm run pageObject-chrome
+    environment:
+      - TIMEOUT=90000
     volumes:
       - ./playwright-report/:/app/playwright-report
       - ./test-results/:/app/test-results
