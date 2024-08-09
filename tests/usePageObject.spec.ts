@@ -1,6 +1,7 @@
 import {expect, test} from '@playwright/test'
 import { PageManager } from '../page-objects/pageManager'
 import {faker} from '@faker-js/faker'
+import { argosScreenshot } from "@argos-ci/playwright";
 
 test.beforeEach(async({page}) => {
     await page.goto('/')
@@ -86,8 +87,13 @@ test('Date Picker Object @regression', async({page}) => {
 test.only('testing with argos ci', async({page}) => {
     const pm = new PageManager(page)
     await pm.navigateTo().formLayoutsPage()
-    // await pm.navigateTo().datePickerPage()
+    await argosScreenshot(page, "forms layouts page");
+    await pm.navigateTo().datePickerPage()
+    await argosScreenshot(page, "datepicker page");
     // await pm.navigateTo().smartTablePage()
+    // await argosScreenshot(page, "smartTable page");
     // await pm.navigateTo().toastrPage()
+    // await argosScreenshot(page, "toastr page");
     // await pm.navigateTo().toolTipPage()
+    // await argosScreenshot(page, "toolTip page");
 })

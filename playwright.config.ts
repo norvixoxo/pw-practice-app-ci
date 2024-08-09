@@ -21,11 +21,22 @@ export default defineConfig<TestOptions>({
   workers: process.env.CI ? 1 : undefined,
   
   reporter: [
+    process.env.CI ? ["dot"] : ["list"],
+    [
+      "@argos-ci/playwright/reporter",
+      {
+        // Upload to Argos on CI only.
+        uploadToArgos: !!process.env.CI,
+
+        // Set your Argos token (required if not using GitHub Actions).
+        // token: "<YOUR-ARGOS-TOKEN>",
+      },
+    ],
     ['json', {outputFile: 'test-results/jsonReport.json'}],
     ['junit', {outputFile: 'test-results/junitReport.xml'}],
     // ['list'],
     // ['html', {open: 'on-failure'}],
-    ['allure-playwright'],
+    // ['allure-playwright'],
     ['html']
   ],
   
@@ -38,6 +49,7 @@ export default defineConfig<TestOptions>({
           : 'http://localhost:4200/',
 
     trace: 'on-first-retry',
+    screenshot: "only-on-failure",
     actionTimeout: 5000,
     navigationTimeout: 5000,
     video: {
